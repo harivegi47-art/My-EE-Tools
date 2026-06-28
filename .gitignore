@@ -1,2 +1,4 @@
 .vscode
 Signals Analyzer/.vscode
+test.py
+Signals Analyzer/__pycache__/
