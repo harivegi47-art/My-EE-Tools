@@ -54,3 +54,94 @@ valid_width(2,1)
 ```
 for which the output will be
 `ValueError: Width_validation: The given bits can't be stored in the given width`
+
+## gates.py
+This is the file containing all the general gates (1 input and 2 input) which will be used further ahead in the project.
+
+### NOT gate
+It takes a single bit input and inverts it.
+Example
+```python
+not_g(0)
+```
+#### Truth table:
+`not_g(0)` → `1`
+`not_g(1)` → `0`
+
+### OR gate
+It takes 2 bits as input and gives output high even if one of them is high
+Example
+```python
+or_g(0,0)
+```
+
+#### Truth table
+`or_g(0,0)` → `0`
+`or_g(1,0)` → `1`
+`or_g(0,1)` → `1`
+`or_g(1,1)` → `1`
+
+### AND gate
+It takes 2 bits as input and gives output high only if both of them are high
+Example
+```python
+and_g(0,0)
+```
+
+#### Truth table
+`and_g(0,0)` → `0`
+`and_g(1,0)` → `0`
+`and_g(0,1)` → `0`
+`and_g(1,1)` → `1`
+
+### NAND gate
+It takes 2 bits as input and gives inverted output of AND gate
+Example
+```python
+nand_g(0,0)
+```
+
+#### Truth table
+`nand_g(0,0)` → `1`
+`nand_g(1,0)` → `1`
+`nand_g(0,1)` → `1`
+`nand_g(1,1)` → `0`
+
+### NOR gate
+It takes 2 bits as input and gives inverted output of OR gate
+Example
+```python
+nor_g(0,0)
+```
+
+#### Truth table
+`nor_g(0,0)` → `1`
+`nor_g(1,0)` → `0`
+`nor_g(0,1)` → `0`
+`nor_g(1,1)` → `0`
+
+#### XOR gate
+It takes 2 bits as input and gives output of OR gate for unequal input and low for equal inputs
+Example
+```python
+xor_g(0,0)
+```
+
+#### Truth table
+`xor_g(0,0)` → `0`
+`xor_g(1,0)` → `1`
+`xor_g(0,1)` → `1`
+`xor_g(1,1)` → `0`
+
+### XNOR gate
+It takes 2 bits as input and gives inverted output of XOR gate
+Example
+```python
+xnor_g(0,0)
+```
+
+#### Truth table
+`xnor_g(0,0)` → `1`
+`xnor_g(1,0)` → `0`
+`xnor_g(0,1)` → `0`
+`xnor_g(1,1)` → `1`
