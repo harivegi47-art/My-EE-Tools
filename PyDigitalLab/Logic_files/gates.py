@@ -19,7 +19,6 @@ def and_g(a,b):
     if a not in (0, 1, True, False) or b not in (0, 1, True, False):
         raise ValueError("Invalid input of and_g: both inputs of 'and gate' should be 0/1/True/False")
     return a & b
-print(and_g(0,2))
 
 def nand_g(a,b):
     if not isinstance(a, int) or not isinstance(b, int):
