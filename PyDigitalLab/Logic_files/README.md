@@ -120,7 +120,7 @@ nor_g(0,0)
 `nor_g(0,1)` → `0`
 `nor_g(1,1)` → `0`
 
-#### XOR gate
+### XOR gate
 It takes 2 bits as input and gives output of OR gate for unequal input and low for equal inputs
 Example
 ```python
@@ -145,3 +145,65 @@ xnor_g(0,0)
 `xnor_g(1,0)` → `0`
 `xnor_g(0,1)` → `0`
 `xnor_g(1,1)` → `1`
+
+## clock.py
+This is the file containing the class clock which we will be using throughtout the remaining project. (initialized with value 0 at start)
+example
+```python
+clk = clock()
+```
+ This clock stores 2 values: state and tally.
+state is the current value of clock at that instant.
+```python
+clk.state
+```
+tally is the total numbers of changes/ticks happened in the clock so far.
+```python
+clk.tally
+```
+clock object can change/tick by using the instance method tick:
+```python
+clk.tick()
+```
+clock can also be reset (to 0) by using instance method reset:
+```python
+clk.reset()
+```
+
+## latch_and_FF.py
+This is the file where basic foundation memory blocks like D Latch and D FlipFlop are present.
+
+### D latch
+This is a standard design of D latch built using 4 NAND gates and 1 NOT gate, all used from the previous gates.py files, without any python inbuilt if else statements. Initiates with Q = 0
+Example:
+```python
+dl = D_latch()
+```
+
+There are 2 stages to this D Latch: Receiving input and filtering with E and passing those intermediate values into cross coupled NAND gates.
+The value in D latch is updated according to D and E when instance method update is called
+```python
+dl.update(0,1) #D = 0, E = 1
+```
+The current value of D Latch can be accessed by read method
+```python
+Q = dl.read()
+```
+
+### D_FF
+This is the class used to build a standard master-slave configuration D FlipFlop using the D latches built above. master D latch is given inverse clock and slave latch with clock, making this a standard design of positive edge triggered D FlipFlop. Takes a clock instance as input and initiates with Q = 0
+Example
+```python
+dff = D_FF(clk)
+```
+
+As mentioned above, this D Flipflop has 2 stages: Master stage and Slave stage, both containing a D latch each, when clk = 0, master stage functions and grabs the input into itself and when clk = 1, slave stage grabs output of master stage as input to output of DFF, so 2 ticks of clock instance are needed to transmit 1 bit of information through the DFF.
+The value of D_FF is updated according to D,clock by calling the instance method update:
+```python
+dff.update(0) # D = 0
+```
+clock is generally made to tick by controlling the external clock instance which is being passed down to D FF.
+The Q value of D FF can be accessed at any instant by calling read function:
+```python
+Q = dff.read()
+```
