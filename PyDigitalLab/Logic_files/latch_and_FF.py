@@ -17,6 +17,8 @@ class D_latch:
     def read(self):
         return self.Q
 
+    def reset(self):
+        self.Q = 0
 
 class D_FF:
     def __init__(self, input_clock):
@@ -35,3 +37,8 @@ class D_FF:
 
     def read(self):
         return self.Q
+
+    def reset(self):
+        self.dlatch2.reset()
+        self.dlatch1.reset()
+        self.Q = self.dlatch2.read()

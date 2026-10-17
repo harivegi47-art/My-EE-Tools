@@ -190,6 +190,8 @@ The current value of D Latch can be accessed by read method
 Q = dl.read()
 ```
 
+Using the instance method reset in the D_Latch sets the D_latch to initializing conditions.
+
 ### D_FF
 This is the class used to build a standard master-slave configuration D FlipFlop using the D latches built above. master D latch is given inverse clock and slave latch with clock, making this a standard design of positive edge triggered D FlipFlop. Takes a clock instance as input and initiates with Q = 0
 Example
@@ -207,3 +209,5 @@ The Q value of D FF can be accessed at any instant by calling read function:
 ```python
 Q = dff.read()
 ```
+
+Using the instance method reset in the D FF sets the D FF to initializing conditions.
